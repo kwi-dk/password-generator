@@ -6,7 +6,7 @@
     Generates secure and random passwords guaranteed to satisfy the usual
     complexity requirements as well.
 
-    The generated passwords are of fixed length (currently 8), and guaranteed
+    The generated passwords are of specified length (default 8), and guaranteed
     to consist at least one characters from each of the defined character
     categories (currently lower case, upper case and numbers).
 
@@ -67,14 +67,38 @@ class PasswordGenerator:
 # Command-line interface
 
 if __name__ == '__main__':
+    import argparse
     import math
     import sys
 
     g = PasswordGenerator()
 
-    if len(sys.argv) == 2 and sys.argv[1] == '-e':
+    # The available actions (one function per action)
+    
+    def generatePassword():
+        print g.generatePassword()
+
+    def estimateEntropy():
         combinations = g.estimateCombinations()
         print 'More than %s combinations ~ %.1f bits of entropy.' % (combinations, math.log(combinations, 2))
-        sys.exit(0)
 
-    print g.generatePassword()
+    # Parse arguments
+
+    parser = argparse.ArgumentParser(description='Generates a random password.')
+    parser.add_argument('length', type=int, nargs='?',
+        default=PasswordGenerator.length,
+        help='the length of the generated password (default: %d)' % PasswordGenerator.length)
+    parser.add_argument('-e', '--entropy', dest='action', action='store_const',
+        const=estimateEntropy, default=generatePassword,
+        help='estimate the entropy of the generated password')
+
+    args = parser.parse_args()
+
+    # Handle arguments
+    g.length = args.length
+
+    if args.length < len(g.categories):
+        sys.stderr.write('The requested password length (%d) may not be less than the number of required character categories (%d).\n' % (args.length, len(g.categories)))
+        sys.exit(1)
+
+    args.action()
