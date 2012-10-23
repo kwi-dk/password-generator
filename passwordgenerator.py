@@ -37,8 +37,9 @@ class PasswordGenerator:
             the real number of combinations will be higher than this estimate.
         """
 
-        allCharsCount = 0
-        combinations = 1
+        # Note: We use floating point, not exact arithmetic.
+        allCharsCount = 0.0
+        combinations = 1.0
 
         # Count combinations for the forced characters.
         for chars in self.categories:
@@ -80,7 +81,7 @@ if __name__ == '__main__':
 
     def estimateEntropy():
         combinations = g.estimateCombinations()
-        print 'More than %s combinations ~ %.1f bits of entropy.' % (combinations, math.log(combinations, 2))
+        print 'More than %.1e combinations ~ %.1f bits of entropy.' % (combinations, math.log(combinations, 2))
 
     # Parse arguments
 
