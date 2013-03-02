@@ -17,6 +17,9 @@
 
 import random
 
+# Use the OS secure random generator (/dev/urandom or CryptGenRandom).
+random = random.SystemRandom()
+
 
 class PasswordGenerator:
     # Character categories
