@@ -15,28 +15,38 @@ satisfy the following requirements:
 - No homoglyphs (characters that look alike, such as the number ``0`` and the
   letter ``O``).
 
+The repository also includes a *passphrase* generator, which will generate a
+secure passphrase consisting of four random words from a dictionary file.
+Perhaps most interestingly, a carefully prepared dictionary file has been
+included; read `the source code`__ for more information.
+
+__ passhrasegenerator.py
+
 
 Files
 -----
 
 The following files are included:
 
-- ``PasswordGenerator.php``: PHP implementation.
+- ``PasswordGenerator.php``: PHP password generator.
 
-- ``passwordgenerator.py``: Python implementation.
+- ``passwordgenerator.py``: Python password generator.
 
-The Python implementation improves on the PHP version in that it uses the OS
-secure random functionality (``/dev/urandom`` on Linux, ``CryptGenRandom`` on
-Windows), and allows a password length to be specified on the command-line.
+- ``passphrasegenerator.py``: Python passphrase generator.
+
+The Python password generator improves on the PHP version in that it uses the
+OS secure random functionality (``/dev/urandom`` on Linux, ``CryptGenRandom``
+on Windows), and allows a password length to be specified on the command-line.
 
 
 Usage
 -----
 
-Generate a password::
+Generate a password or passphrase::
 
     ./passwordgenerator.php
     ./passwordgenerator.py
+    ./passphrasegenerator.py
 
 Generate a password of custom length (not supported in the PHP version)::
 
@@ -46,6 +56,7 @@ Estimate entropy (number of possible password combinations)::
 
     ./passwordgenerator.php -e
     ./passwordgenerator.py -e
+    ./passphrasegenerator.py -e
 
 
 Comparison to alternatives
@@ -70,11 +81,18 @@ Estimates entropy?          Yes                    Yes                   No     
 =========================   =====================  ====================  ==========  ==============
 
 
+Passphrase generators are not uncommon either, but most simply use the standard
+Unix word list in ``/usr/share/dict/words``, which yields passphrases of
+questionable quality. The real value of the included passphrase generator is
+thus the included word list.
+
+
 Public Domain Dedication
 ------------------------
 
 To the extent possible under law, the author has waived all copyright and
-related or neighboring rights to Password Generator.
+related or neighboring rights to Password Generator and the files in this
+repository.
 
 For more information see:
 http://creativecommons.org/publicdomain/zero/1.0/
