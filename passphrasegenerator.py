@@ -65,7 +65,7 @@ class PassphraseGenerator:
         return len(self.words) ** self.length
 
     def generatePassword(self):
-        return ' '.join(random.choice(self.words) for i in xrange(self.length))
+        return ' '.join(random.choice(self.words) for i in range(self.length))
 
 # Command-line interface
 
@@ -87,6 +87,6 @@ if __name__ == '__main__':
 
     if args.entropy:
         combinations = g.calculateCombinations()
-        print '%s combinations ~ %.1f bits of entropy.' % (combinations, math.log(combinations, 2))
+        print('%s combinations ~ %.1f bits of entropy.' % (combinations, math.log(combinations, 2)))
     else:
-        print g.generatePassword()
+        print(g.generatePassword())

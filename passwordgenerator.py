@@ -61,7 +61,7 @@ class PasswordGenerator:
         passwordMakeup = [ allCharacters ] * self.length
 
         # For each category, we now force one random character to be from that specific category.
-        forcedIndexes = random.sample(xrange(self.length), len(self.categories))
+        forcedIndexes = random.sample(range(self.length), len(self.categories))
 
         for i, chars in zip(forcedIndexes, self.categories):
             passwordMakeup[i] = chars
@@ -80,11 +80,11 @@ if __name__ == '__main__':
     # The available actions (one function per action)
     
     def generatePassword():
-        print g.generatePassword()
+        print(g.generatePassword())
 
     def estimateEntropy():
         combinations = g.estimateCombinations()
-        print 'More than %.1e combinations ~ %.1f bits of entropy.' % (combinations, math.log(combinations, 2))
+        print('More than %.1e combinations ~ %.1f bits of entropy.' % (combinations, math.log(combinations, 2)))
 
     # Parse arguments
 
