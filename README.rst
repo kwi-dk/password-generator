@@ -18,9 +18,11 @@ satisfy the following requirements:
 The repository also includes a *passphrase* generator, which will generate a
 secure passphrase consisting of four random words from a dictionary file.
 Perhaps most interestingly, a carefully prepared dictionary file has been
-included; read `the source code`__ for more information.
+included; read `the source code`__ for more information, or `try it out`__
+in a browser.
 
-__ passhrasegenerator.py
+__ passphrasegenerator.py
+__ passphrasegenerator.html
 
 
 Files
@@ -33,6 +35,8 @@ The following files are included:
 - ``passwordgenerator.py``: Python password generator.
 
 - ``passphrasegenerator.py``: Python passphrase generator.
+
+- ``passphrasegenerator.html``: JavaScript passphrase generator.
 
 The Python password generator improves on the PHP version in that it uses the
 OS secure random functionality (``/dev/urandom`` on Linux, ``CryptGenRandom``
