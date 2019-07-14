@@ -62,15 +62,15 @@ h1 {
 
 <p>Passwords are hard.
 Humans are notoriously bad at coming up with passwords, and typical "secure" passwords are a mess to remember and to type... And worst, they're not even secure.</p>
-<p>This JavaScript demonstration generates random passphrases, which are much more secure than most passwords, and much easier to remember and type.</p>
+<p>This JavaScript demonstration generates random passphrases that are much more secure than user-selected passwords, and hopefully easier to remember and type than traditional computer-generated passwords.</p>
 
 <h3>Passphrase benefits</h3>
 
 <ul>
 <li>Secure: This tool picks a random passphrase out of more than 16 trillion possible passphrases (in technical terms, 44 bits of entropy).
-At 1000 guesses per second, an attacker will need 260 years on average to guess the password.</li>
+At 10,000 guesses per second, an attacker will need 56 years on average to guess the password.</li>
 <li>Easier to remember:
-A passphrase of four English words, even if it's non-sense, encourages the brain to come up with its own mnemonic device, which aids retention.
+A passphrase of four English words, even if it's non-sense, encourages the brain to come up with its own mnemonic device, which may aid retention.
 <a href="https://xkcd.com/936/">(Obligatory XKCD.)</a></li>
 <li>Easier to type:
 The passphrase, while longer than an equivalent password, only consists of letters.
@@ -96,7 +96,7 @@ To defend against this, you should verify that it is not possible to log in usin
 Go now! No jury in the world will convict you.</p>
 
 
-<h2>Notes on producing quality passphrases</h2>
+<h2>Notes on generating quality passphrases</h2>
 
 <p>Generating a good random passphrase is more complex than just picking random words from a dictionary.
 The word list used here is 2027 words, carefully selected according to two criteria.</p>
